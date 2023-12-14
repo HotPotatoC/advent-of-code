@@ -87,11 +87,13 @@ func PartTwo(input []string) int {
 func main() {
 	input := utility.LoadInputFile("input.in")
 
-	partOneElapse := time.Now()
-	fmt.Printf("Part one: %d\n", PartOne(input))
-	fmt.Printf("Part one completed in %s\n", time.Since(partOneElapse))
+	partOneStart := time.Now()
+	partOneResult := PartOne(input)
+	fmt.Printf("Part one: %d\n", partOneResult)
+	fmt.Printf("Part one completed in %s\n", time.Since(partOneStart))
 
 	partTwoElapse := time.Now()
-	fmt.Printf("Part two: %d\n", PartTwo(input))
+	partTwoResult := PartTwo(input)
+	fmt.Printf("Part two: %d\n", partTwoResult)
 	fmt.Printf("Part two completed in %s\n", time.Since(partTwoElapse))
 }
