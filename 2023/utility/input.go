@@ -6,6 +6,14 @@ import (
 	"os"
 )
 
+func ByteToInt(b byte) int {
+	return int(b - '0')
+}
+
+func IsDigit(b byte) bool {
+	return b >= '0' && b <= '9'
+}
+
 func LoadInputFile(filename string) []string {
 	file, err := os.Open(filename)
 	if err != nil {

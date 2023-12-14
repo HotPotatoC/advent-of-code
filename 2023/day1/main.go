@@ -9,28 +9,20 @@ import (
 	"github.com/HotPotatoC/advent-of-code/2023/utility"
 )
 
-func toInt(c byte) int {
-	return int(c - '0')
-}
-
-func isDigit(c byte) bool {
-	return c >= '0' && c <= '9'
-}
-
 func PartOne(input []string) int {
 	sum := 0
 	for _, calibration := range input {
 		current := 0
 		for i := 0; i < len(calibration); i++ {
-			if isDigit(calibration[i]) {
-				current += toInt(calibration[i]) * 10
+			if utility.IsDigit(calibration[i]) {
+				current += utility.ByteToInt(calibration[i]) * 10
 				break
 			}
 		}
 
 		for i := len(calibration) - 1; i >= 0; i-- {
-			if isDigit(calibration[i]) {
-				current += toInt(calibration[i])
+			if utility.IsDigit(calibration[i]) {
+				current += utility.ByteToInt(calibration[i])
 				break
 			}
 		}
@@ -42,15 +34,8 @@ func PartOne(input []string) int {
 }
 
 var mapLetterToInt map[string]int = map[string]int{
-	"one":   1,
-	"two":   2,
-	"three": 3,
-	"four":  4,
-	"five":  5,
-	"six":   6,
-	"seven": 7,
-	"eight": 8,
-	"nine":  9,
+	"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+	"six": 6, "seven": 7, "eight": 8, "nine": 9,
 }
 
 func PartTwo(input []string) int {
@@ -78,16 +63,16 @@ func PartTwo(input []string) int {
 		}
 
 		for i := 0; i < len(calibration); i++ {
-			if isDigit(calibration[i]) && i < firstDigitIDX {
-				firstDigit = toInt(calibration[i])
+			if utility.IsDigit(calibration[i]) && i < firstDigitIDX {
+				firstDigit = utility.ByteToInt(calibration[i])
 				firstDigitIDX = i
 				break
 			}
 		}
 
 		for i := len(calibration) - 1; i >= 0; i-- {
-			if isDigit(calibration[i]) && i > lastDigitIDX {
-				lastDigit = toInt(calibration[i])
+			if utility.IsDigit(calibration[i]) && i > lastDigitIDX {
+				lastDigit = utility.ByteToInt(calibration[i])
 				lastDigitIDX = i
 				break
 			}
